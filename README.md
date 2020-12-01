@@ -9,7 +9,7 @@ To start this app, perform the following step in order:
 
 3. Set environment variables:
 APPLY_URI     - URI for connection to database
-DB_NAME       - default that will be used by default
+DB_NAME       - database that will be used by default
 DB_COLLECTION - collection in the datababse
 
 (Windows: set ENV_VARIABLE=value, 
