@@ -21,14 +21,14 @@ var ts TestServer
 func TestDBConnect(*testing.T) {
 	handler := ConfigureServer()
 	ts.Server = httptest.NewServer(handler)
-	ts.Client = ts.Server.Client()
 
 }
 func TestShortenURL(*testing.T) {
 	var url URL
+	client := &http.Client{}
 	jsonValue := []byte(`{"original":"http://google.com"}`)
 	request, err := http.NewRequest("POST", ts.Server.URL, bytes.NewBuffer(jsonValue))
-	resp, err := ts.Client.Do(request)
+	resp, err := client.Do(request)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -48,13 +48,13 @@ func TestShortenURL(*testing.T) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	resp, err = ts.Client.Do(request)
+	resp, err = client.Do(request)
 	log.Print("Response status: ", resp.Status)
 	body, _ = ioutil.ReadAll(resp.Body)
 	log.Print("Response body:", string(body))
 	
 	request, err = http.NewRequest("POST", ts.Server.URL + "/" + url.Shorten, nil)
-	resp, err = ts.Client.Do(request)
+	resp, err = client.Do(request)
 	if err != nil {
 		log.Fatal(err)
 	}

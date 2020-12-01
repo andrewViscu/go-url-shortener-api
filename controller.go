@@ -81,8 +81,7 @@ func ShortenURL(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid url '" + url.Original + "'", 400)
 		return
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second * 10)
-	defer cancel()
+	ctx, _ := context.WithTimeout(context.Background(), time.Second * 10)
 	opts := options.FindOne().SetCollation(&options.Collation{})
 	i := 0
 	for notFound == nil{ //loop til you find not taken url 
