@@ -2,9 +2,9 @@ name: Go
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
 
@@ -30,6 +30,6 @@ jobs:
     - name: Test
       run: go test -v ./...
       env:
-        DB_URI: ${{secrets.DB_URI}}
+        DB_URI: ${{ secrets.DB_URI }}
         DB_DEFAULT_DATABASE: ${{ secrets.DB_NAME }}
         DB_COLLECTION: ${{ secrets.DB_COLLECTION }}
