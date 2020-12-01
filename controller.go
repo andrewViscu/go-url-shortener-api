@@ -87,7 +87,7 @@ func ShortenURL(w http.ResponseWriter, r *http.Request) {
 	i := 0
 	for notFound == nil{ //loop til you find not taken url 
 		stringURL = generateURL()
-		found := urlCollection.FindOne(ctx, bson.D{{"shorten", stringURL}}, opts)
+		found := urlCollection.FindOne(ctx, bson.D{{Key: "shorten", Value: stringURL}}, opts)
 		notFound = found.Err()
 		i++
 	}
@@ -103,7 +103,7 @@ func RedirectFromURL(w http.ResponseWriter, r *http.Request) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second * 10)
 	defer cancel()
 	opts := options.FindOne().SetCollation(&options.Collation{})
-	res := urlCollection.FindOne(ctx, bson.D{{"shorten", stringURL}}, opts)
+	res := urlCollection.FindOne(ctx, bson.D{{Key: "shorten",Value: stringURL}}, opts)
 	err := res.Err()
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
