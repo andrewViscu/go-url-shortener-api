@@ -8,9 +8,9 @@ To start this app, perform the following step in order:
 2. Cd into the project folder
 
 3. Set environment variables:
-APPLY_URI     - URI for connection to database
-DB_NAME       - database that will be used for storing data
-DB_COLLECTION - collection in the datababse
+    * APPLY_URI     - URI for connection to database
+    * DB_NAME       - database that will be used for storing data
+    * DB_COLLECTION - collection in the datababse
 
 (Windows: set ENV_VARIABLE=value, 
  Linux: export ENV_VARIABLE=value)
