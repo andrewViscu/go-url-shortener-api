@@ -21,7 +21,7 @@ type URL struct {
 	Shorten  string `json:"shorten"`
 }
 
-var urlCollection = DBConnect().Database(os.Getenv("DB_DEFAULT_DATABASE")).Collection(os.Getenv("DB_COLLECTION"))
+var urlCollection = DBConnect().Database(os.Getenv("DB_NAME")).Collection(os.Getenv("DB_COLLECTION"))
 
 func Index(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Content-Type", "application/json")

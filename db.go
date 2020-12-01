@@ -13,7 +13,7 @@ import (
 )
 
 func DBConnect() *mongo.Client {
-	ApplyURI := "mongodb+srv://" + os.Getenv("DB_USERNAME") + ":" + os.Getenv("DB_PASSWORD") + "@cluster0.boadx.mongodb.net/URLs?retryWrites=true&w=majority"
+	ApplyURI := os.Getenv("DB_URI")
 	opts := options.Client().ApplyURI(ApplyURI)
 	client, err := mongo.NewClient(opts)
 	if err != nil {
