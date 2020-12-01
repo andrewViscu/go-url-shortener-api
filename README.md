@@ -15,7 +15,7 @@ DB_COLLECTION - collection in the datababse
 (Windows: set ENV_VARIABLE=value, 
  Linux: export ENV_VARIABLE=value)
 
-4.enter ```go run .``` to start server
+4.enter ```go run .``` to start server.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
